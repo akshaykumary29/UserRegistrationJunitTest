@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class UserRegistrationTest {
     UserRegistration userRegistration;
+
     @Before
     public void before() {
         userRegistration = new UserRegistration();
@@ -45,5 +46,17 @@ public class UserRegistrationTest {
     public void givenEmailWhenNotProperShouldReturnFalse() {
         boolean result = userRegistration.email("patil()#@gamil.com");
         Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenMobileNumber_WhenProper_ShouldReturnTrue() {
+        boolean result = userRegistration.mobileNumber("91 9876543210");
+        Assert.assertEquals(true,result);
+    }
+
+    @Test
+    public void givenMobileNumber_WhenNotProper_ShouldReturnFalse() {
+        boolean result = userRegistration.mobileNumber("91 19876543210");
+        Assert.assertEquals(false,result);
     }
 }

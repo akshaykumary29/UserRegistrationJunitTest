@@ -32,6 +32,13 @@ public class UserRegistration {
         return matcher.matches();
     }
 
+    public boolean mobileNumber(String mobileNumber) {
+        String regex = "^[0-9]{2}\\s{1}[0-9]{10}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(mobileNumber);
+        return matcher.matches();
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome To User Registration Problem Using Junit Testing.");
     }
