@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
  * @version : 1.8
  * @since : 09/11/2021
  */
+
 public class UserRegistration {
     public boolean firstName(String firstName) {
         String regex = "^[A-Z]{1}[a-z]{2,}$";
@@ -39,6 +40,12 @@ public class UserRegistration {
         return matcher.matches();
     }
 
+    /**
+     * Password should have minimum 8 character
+     *
+     * @param password
+     * @return
+     */
     public boolean password(String password) {
         String regex = "^[0-9a-zA-Z!,@#$&*().]{8,}$";
         Pattern pattern = Pattern.compile(regex);
@@ -46,6 +53,12 @@ public class UserRegistration {
         return matcher.matches();
     }
 
+    /**
+     * Password should have atleast 1 uppercase
+     *
+     * @param passwordRule2
+     * @return
+     */
     public boolean passwordRule2(String passwordRule2) {
         String regex = "^(?=.*[A-Z]){1}(?=.*[a-z]).{8,}$";  //(?=.*[a-z])(?=.*[A-Z]).{8,40}
         Pattern pattern = Pattern.compile(regex);
@@ -53,10 +66,29 @@ public class UserRegistration {
         return matcher.matches();
     }
 
+    /**
+     * Password should have atleast 1 numeric number
+     *
+     * @param passwordRule3
+     * @return
+     */
     public boolean passwordRule3(String passwordRule3) {
         String regex = "^(?=.*[A-Z]){1}(?=.*[a-z])(?=.*[0-9]).{8,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(passwordRule3);
+        return matcher.matches();
+    }
+
+    /**
+     * Password rule4 - has exactly 1 special character
+     *
+     * @param passwordRule4
+     * @return
+     */
+    public boolean passwordRule4(String passwordRule4) {
+        String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=[^$@!#%*?&]*[$#@!%*?&][^$@!#%*?&]*$).{8,}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(passwordRule4);
         return matcher.matches();
     }
 

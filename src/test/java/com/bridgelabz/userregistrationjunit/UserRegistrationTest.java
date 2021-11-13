@@ -85,14 +85,26 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void givenPasswordRule3_WhenProper_ShouldReturnTrue() {
-        boolean result = userRegistration.passwordRule3("abCde@123");
+    public void givenPasswordAtleastOneNumber_WhenProper_ShouldReturnTrue() {
+        boolean result = userRegistration.passwordRule3("abCde1234");
         Assert.assertEquals(true, result);
     }
 
     @Test
-    public void givenPasswordRule3_WhenNotProper_ShouldReturnFalse() {
+    public void givenPasswordAtleastOneNumber_WhenNotProper_ShouldReturnFalse() {
         boolean result = userRegistration.passwordRule3("123456789");
+        Assert.assertEquals(false, result);
+    }
+
+    @Test
+    public void givenPasswordHasExactlyOneSymbol_WhenProper_ShouldReturnTrue() {
+        boolean result = userRegistration.passwordRule4("abCde@xyz123");
+        Assert.assertEquals(true, result);
+    }
+
+    @Test
+    public void givenPasswordHasExactlyOneSymbol_WhenNotProper_ShouldReturnFalse() {
+        boolean result = userRegistration.passwordRule4("123456789");
         Assert.assertEquals(false, result);
     }
 }
