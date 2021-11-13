@@ -46,6 +46,13 @@ public class UserRegistration {
         return matcher.matches();
     }
 
+    public boolean passwordRule2(String passwordRule2) {
+        String regex = "^(?=.*[A-Z]){1}(?=.*[a-z]).{8,}$";  //(?=.*[a-z])(?=.*[A-Z]).{8,40}
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(passwordRule2);
+        return matcher.matches();
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome To User Registration Problem Using Junit Testing.");
     }

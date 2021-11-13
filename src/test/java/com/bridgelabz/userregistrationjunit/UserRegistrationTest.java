@@ -51,13 +51,13 @@ public class UserRegistrationTest {
     @Test
     public void givenMobileNumber_WhenProper_ShouldReturnTrue() {
         boolean result = userRegistration.mobileNumber("91 9876543210");
-        Assert.assertEquals(true,result);
+        Assert.assertEquals(true, result);
     }
 
     @Test
     public void givenMobileNumber_WhenNotProper_ShouldReturnFalse() {
         boolean result = userRegistration.mobileNumber("91 19876543210");
-        Assert.assertEquals(false,result);
+        Assert.assertEquals(false, result);
     }
 
     @Test
@@ -69,6 +69,18 @@ public class UserRegistrationTest {
     @Test
     public void givenPassword_WhenNotProper_ShouldReturnFalse() {
         boolean result = userRegistration.password("abc@");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenPasswordRule2_WhenProper_ShouldReturnTrue() {
+        boolean result = userRegistration.passwordRule2("abCde@12345");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenPasswordRule2_WhenNotProper_ShouldReturnFalse() {
+        boolean result = userRegistration.passwordRule2("abc@");
         Assert.assertFalse(result);
     }
 }
