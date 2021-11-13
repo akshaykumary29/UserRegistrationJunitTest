@@ -107,4 +107,16 @@ public class UserRegistrationTest {
         boolean result = userRegistration.passwordRule4("123456789");
         Assert.assertEquals(false, result);
     }
+
+    @Test
+    public void givenMessage_WhenHappy_ShouldReturnEntrySuccessful() {
+        String result = MoodAnalyser.analyserMood("User is Happy");
+        Assert.assertEquals("Entry Successfully", result);
+    }
+
+    @Test
+    public void givenMessage_WhenSad_ShouldReturnEntryFailed() {
+        String result = MoodAnalyser.analyserMood("User is Sad");
+        Assert.assertEquals("Entry Failed", result);
+    }
 }
