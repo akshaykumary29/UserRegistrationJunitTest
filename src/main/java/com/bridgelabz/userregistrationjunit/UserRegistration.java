@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
  * @author : Akshay
  * @version : 1.8
  * @since : 09/11/2021
- *
  */
 public class UserRegistration {
     public boolean firstName(String firstName) {
@@ -23,6 +22,13 @@ public class UserRegistration {
         String regex = "^[A-Z]{1}[a-z]{2,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(lastName);
+        return matcher.matches();
+    }
+
+    public boolean email(String email) {
+        String regex = "^[a-z0-9]{3,}+([_+-.][a-z0-9]{3,}+)*@[a-z0-9]+.[a-z]{2,3}+(.[a-z]{2,3}){0,1}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
 
