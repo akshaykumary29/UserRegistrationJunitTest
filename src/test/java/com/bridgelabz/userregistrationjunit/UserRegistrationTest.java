@@ -13,9 +13,9 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void givenFirstNameWhenProperShouldReturnTrue() {
+    public void givenFirstName_WhenProper_ShouldReturnTrue() {
         try {
-            boolean result = userRegistration.firstName("Akshay");
+            boolean result = userRegistration.validateFirstName.validate("Akshay");
             Assert.assertEquals(true, result);
         } catch (UserRegistrationException e) {
             System.out.println(e);
@@ -23,9 +23,9 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void givenFirstNameWhenNotProperShouldReturnFalse() {
+    public void givenFirstName_WhenNotProper_ShouldReturnFalse() {
         try {
-            boolean result = userRegistration.firstName("akshay");
+            boolean result = userRegistration.validateFirstName.validate("akshay");
             Assert.assertEquals(false, result);
         } catch (UserRegistrationException e) {
             System.out.println(e);
@@ -33,9 +33,29 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void givenLastNameWhenProperShouldReturnTrue() {
+    public void givenFirstName_null_ShouldThrowUserRegistrationException() {
         try {
-            boolean result = userRegistration.lastName("Patil");
+            userRegistration.validateFirstName.validate(null);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.NULL, UserRegistrationException.type);
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void givenFirstName_emptyString_ShouldThrowUserRegistrationException() {
+        try {
+            userRegistration.validateFirstName.validate("");
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.EMPTY, UserRegistrationException.type);
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void givenLastName_WhenProper_ShouldReturnTrue() {
+        try {
+            boolean result = userRegistration.validateLastName.validate("Patil");
             Assert.assertTrue(result);
         } catch (UserRegistrationException e) {
             System.out.println(e);
@@ -43,9 +63,9 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void givenLastNameWhenNotProperShouldReturnFalse() {
+    public void givenLastName_WhenNotProper_ShouldReturnFalse() {
         try {
-            boolean result = userRegistration.lastName("patil123");
+            boolean result = userRegistration.validateLastName.validate("patil123");
             Assert.assertFalse(result);
         } catch (UserRegistrationException e) {
             System.out.println(e);
@@ -53,9 +73,29 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void givenEmailWhenProperShouldReturnTrue() {
+    public void givenLastName_null_ShouldThrowUserRegistraationException() {
         try {
-            boolean result = userRegistration.email("patil@123gmail.com");
+            userRegistration.validateLastName.validate(null);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.NULL, UserRegistrationException.type);
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void givenLastName_emptyString_ShouldThrowUserRegistrationException() {
+        try {
+            userRegistration.validateLastName.validate("");
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.EMPTY, UserRegistrationException.type);
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void givenEmail_WhenProper_ShouldReturnTrue() {
+        try {
+            boolean result = userRegistration.validateEmail.validate("patil@123gmail.com");
             Assert.assertTrue(result);
         } catch (UserRegistrationException e) {
             System.out.println(e);
@@ -65,7 +105,7 @@ public class UserRegistrationTest {
     @Test
     public void givenEmailWhenNotProperShouldReturnFalse() {
         try {
-            boolean result = userRegistration.email("patil()#@gamil.com");
+            boolean result = userRegistration.validateEmail.validate("patil()#@gamil.com");
             Assert.assertFalse(result);
         } catch (UserRegistrationException e) {
             System.out.println(e);
@@ -73,9 +113,29 @@ public class UserRegistrationTest {
     }
 
     @Test
+    public void givenEmail_null_ShouldThrowUserRegistrationException() {
+        try {
+            userRegistration.validateEmail.validate(null);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.NULL, UserRegistrationException.type);
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void givenEmail_emptyString_ShouldThrowUserRegistrationException() {
+        try {
+            boolean result = userRegistration.validateEmail.validate("");
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.EMPTY, UserRegistrationException.type);
+            System.out.println(e);
+        }
+    }
+
+    @Test
     public void givenMobileNumber_WhenProper_ShouldReturnTrue() {
         try {
-            boolean result = userRegistration.mobileNumber("91 9876543210");
+            boolean result = userRegistration.validateMobileNumber.validate("91 9876543210");
             Assert.assertEquals(true, result);
         } catch (UserRegistrationException e) {
             System.out.println(e);
@@ -85,7 +145,7 @@ public class UserRegistrationTest {
     @Test
     public void givenMobileNumber_WhenNotProper_ShouldReturnFalse() {
         try {
-            boolean result = userRegistration.mobileNumber("91 19876543210");
+            boolean result = userRegistration.validateMobileNumber.validate("91 19876543210");
             Assert.assertEquals(false, result);
         } catch (UserRegistrationException e) {
             System.out.println(e);
@@ -93,9 +153,29 @@ public class UserRegistrationTest {
     }
 
     @Test
+    public void givenPhoneNumber_null_ShouldThrowUserRegistrationException() {
+        try {
+            userRegistration.validateMobileNumber.validate(null);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.NULL, UserRegistrationException.type);
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void givenPhoneNumber_emptyString_ShouldThrowUserRegistrationException() {
+        try {
+            userRegistration.validateMobileNumber.validate("");
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.EMPTY, UserRegistrationException.type);
+            System.out.println(e);
+        }
+    }
+
+    @Test
     public void givenPassword_WhenProper_ShouldReturnTrue() {
         try {
-            boolean result = userRegistration.password("Abcde@12345");
+            boolean result = userRegistration.validatePassword.validate("Abcde@12345");
             Assert.assertTrue(result);
         } catch (UserRegistrationException e) {
             System.out.println(e);
@@ -105,7 +185,7 @@ public class UserRegistrationTest {
     @Test
     public void givenPassword_WhenNotProper_ShouldReturnFalse() {
         try {
-            boolean result = userRegistration.password("abc@");
+            boolean result = userRegistration.validatePassword.validate("abc@");
             Assert.assertFalse(result);
         } catch (UserRegistrationException e) {
             System.out.println(e);
@@ -113,9 +193,29 @@ public class UserRegistrationTest {
     }
 
     @Test
+    public void givenPassword_null_ShouldThrowUserRegistrationException() {
+        try {
+            userRegistration.validatePassword.validate(null);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.NULL, e.type);
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void givenPassword_emptyString_ShouldThrowUserRegistrationException() {
+        try {
+            userRegistration.validatePassword.validate("");
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.EMPTY, UserRegistrationException.type);
+            System.out.println(e);
+        }
+    }
+
+    @Test
     public void givenPasswordRule2_WhenProper_ShouldReturnTrue() {
         try {
-            boolean result = userRegistration.passwordRule2("abCde@12345");
+            boolean result = userRegistration.validatePassword.validate("abCde@12345");
             Assert.assertTrue(result);
         } catch (UserRegistrationException e) {
             System.out.println(e);
@@ -125,7 +225,7 @@ public class UserRegistrationTest {
     @Test
     public void givenPasswordRule2_WhenNotProper_ShouldReturnFalse() {
         try {
-            boolean result = userRegistration.passwordRule2("abc@");
+            boolean result = userRegistration.validatePassword.validate("abc@");
             Assert.assertFalse(result);
         } catch (UserRegistrationException e) {
             System.out.println(e);
@@ -133,9 +233,29 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void givenPasswordAtleastOneNumber_WhenProper_ShouldReturnTrue() {
+    public void givenPasswordRule2_null_ShouldThrowUserRegistrationException() {
         try {
-            boolean result = userRegistration.passwordRule3("abCde1234");
+            userRegistration.validatePassword.validate(null);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.NULL, e.type);
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void givenPasswordRule2_emptyString_ShouldThrowUserRegistrationException() {
+        try {
+            userRegistration.validatePassword.validate("");
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.EMPTY, UserRegistrationException.type);
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void givenPasswordRule3_WhenProper_ShouldReturnTrue() {
+        try {
+            boolean result = userRegistration.validatePassword.validate("123Aa@123");
             Assert.assertEquals(true, result);
         } catch (UserRegistrationException e) {
             System.out.println(e);
@@ -143,9 +263,9 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void givenPasswordAtleastOneNumber_WhenNotProper_ShouldReturnFalse() {
+    public void givenPasswordRule3_WhenNotProper_ShouldReturnFalse() {
         try {
-            boolean result = userRegistration.passwordRule3("123456789");
+            boolean result = userRegistration.validatePassword.validate("123456789");
             Assert.assertEquals(false, result);
         } catch (UserRegistrationException e) {
             System.out.println(e);
@@ -153,9 +273,29 @@ public class UserRegistrationTest {
     }
 
     @Test
+    public void givenPasswordRule3_null_ShouldThrowUserRegistrationException() {
+        try {
+            userRegistration.validatePassword.validate(null);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.NULL, e.type);
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void givenPasswordRule3_emptyString_ShouldThrowUserRegistrationException() {
+        try {
+            userRegistration.validatePassword.validate("");
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.EMPTY, UserRegistrationException.type);
+            System.out.println(e);
+        }
+    }
+
+    @Test
     public void givenPasswordHasExactlyOneSymbol_WhenProper_ShouldReturnTrue() {
         try {
-            boolean result = userRegistration.passwordRule4("abCde@xyz123");
+            boolean result = userRegistration.validatePassword.validate("abCde@xyz123");
             Assert.assertEquals(true, result);
         } catch (UserRegistrationException e) {
             System.out.println(e);
@@ -165,9 +305,29 @@ public class UserRegistrationTest {
     @Test
     public void givenPasswordHasExactlyOneSymbol_WhenNotProper_ShouldReturnFalse() {
         try {
-            boolean result = userRegistration.passwordRule4("123456789");
+            boolean result = userRegistration.validatePassword.validate("123456789");
             Assert.assertEquals(false, result);
         } catch (UserRegistrationException e) {
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void givenPasswordHasExactlyOneSymbol_null_ShouldThrowUserRegistrationException() {
+        try {
+            userRegistration.validatePassword.validate(null);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.NULL, UserRegistrationException.type);
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void givenPasswordHasExactlyOneSymbol_emptyString_ShouldThrowUserRegistrationException() {
+        try {
+            userRegistration.validatePassword.validate("");
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.EMPTY, UserRegistrationException.type);
             System.out.println(e);
         }
     }
@@ -189,6 +349,26 @@ public class UserRegistrationTest {
             Assert.assertEquals("Entry Failed", result);
         } catch (MoodAnalyzerException e) {
             System.out.println(e);
+        }
+    }
+
+    @Test
+    public void givenMessage_NULL_ShouldReturnMoodAnalyserException() throws MoodAnalyzerException {
+        MoodAnalyser moodAnalyser = new MoodAnalyser();
+        try {
+            MoodAnalyser.analyserMood(null);
+        } catch (MoodAnalyzerException e) {
+            Assert.assertEquals(MoodAnalyzerException.type.NULL, e.type);
+        }
+    }
+
+    @Test
+    public void givenMessage_EMPTY_ShouldReturnMoodAnalyzerException() throws MoodAnalyzerException {
+        MoodAnalyser moodAnalyser = new MoodAnalyser();
+        try {
+            MoodAnalyser.analyserMood("");
+        } catch (MoodAnalyzerException e) {
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.EMPTY, MoodAnalyzerException.type);
         }
     }
 }

@@ -12,7 +12,7 @@ public class UserRegistrationException extends Exception {
 
     public UserRegistrationException(ExceptionType type, String message) {
         this.type = type;
-        this.message=message;
+        this.message = message;
     }
 
     @Override
